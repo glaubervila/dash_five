@@ -1,0 +1,13 @@
+gunicorn
+Django==2.1.1
+djangorestframework
+django-filter
+django-url-filter
+django-cors-headers
+mysqlclient
+humanize
+coverage
+coveralls
+pep8
+pyflakes
+pytest

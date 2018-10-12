@@ -1,0 +1,10 @@
+# dotenv
+.env
+
+# Logs
+log
+
+# Archive
+archive
+
+*.db
