@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'corsheaders',
     # Project Apps
     'common',
+    'market',
+    'sale',
 ]
 
 MIDDLEWARE = [

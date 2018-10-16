@@ -9,10 +9,11 @@ class ContryAdmin(admin.ModelAdmin):
 
 @admin.register(State)
 class StateAdmin(admin.ModelAdmin):
-    list_display = ('id', 'contry', 'name', 'uf')
+    list_display = ('id', 'country', 'name', 'uf')
     search_fields = ('name', 'uf')
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
     list_display = ('id', 'state', 'name')
     search_fields = ('name',)
+

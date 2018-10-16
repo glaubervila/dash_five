@@ -13,10 +13,10 @@ class Country(models.Model):
 
 class State(models.Model):
     # Relation With Contry
-    contry = models.ForeignKey(
+    country = models.ForeignKey(
         Country, 
         on_delete=models.CASCADE, 
-        verbose_name='Contry'
+        verbose_name='Country'
     )
     name = models.CharField(
         max_length=256,
@@ -28,6 +28,7 @@ class State(models.Model):
     )
 
 class City(models.Model):
+    # Relation With State
     state = models.ForeignKey(
         State, 
         on_delete=models.CASCADE, 
@@ -37,3 +38,7 @@ class City(models.Model):
         max_length=256,
         verbose_name='Name'
     )
+
+
+
+
