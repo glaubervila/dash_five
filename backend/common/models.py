@@ -11,6 +11,9 @@ class Country(models.Model):
         verbose_name='Initials'
     )
 
+    def __str__(self):
+        return self.name
+
 class State(models.Model):
     # Relation With Contry
     country = models.ForeignKey(
@@ -27,6 +30,9 @@ class State(models.Model):
         verbose_name='UF'
     )
 
+    def __str__(self):
+        return self.name
+
 class City(models.Model):
     # Relation With State
     state = models.ForeignKey(
@@ -39,6 +45,7 @@ class City(models.Model):
         verbose_name='Name'
     )
 
-
+    def __str__(self):
+        return self.name
 
 

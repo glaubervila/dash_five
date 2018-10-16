@@ -35,3 +35,22 @@ class Store(models.Model):
         max_length=1024,
         verbose_name='Adress'
     )
+
+    def __str__(self):
+        return self.name
+
+class Checkout(models.Model):
+
+    store = models.ForeignKey(
+        Store, 
+        on_delete=models.CASCADE, 
+        verbose_name='Store'
+    )
+
+    number = models.PositiveIntegerField(
+        verbose_name='Number'
+    )
+
+
+    def __str__(self):
+        return self.number
