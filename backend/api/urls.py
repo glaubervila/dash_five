@@ -19,8 +19,23 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
+
+from common.views import *
+from market.views import *
+from sale.views import *
 
 router = DefaultRouter()
+
+router.register(r'country', CountryViewSet)
+router.register(r'state', StateViewSet)
+router.register(r'city', CityViewSet)
+
+router.register(r'market/store', StoreViewSet)
+router.register(r'market/checkout', CheckoutViewSet)
+
+router.register(r'sale/ticket', TicketViewSet)
+router.register(r'sale/payment', PaymentViewSet)
 
 
 urlpatterns = [
