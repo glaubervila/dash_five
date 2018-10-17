@@ -2,6 +2,18 @@
 
 ## Instalação 
 
+## Requirements
+
+Git: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-18-04
+
+Yarn: https://yarnpkg.com/lang/en/docs/install/#debian-stable
+
+Docker: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+
+Docker Composer: https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04
+
+
+
 ## Instalation
 ### Clone Repository
 ```
