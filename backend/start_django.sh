@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Wait mysql start
+echo Wait mysql start.
+sleep 15
+
 # Apply database migrations
 echo Running Migrate.
 python manage.py migrate

@@ -104,7 +104,7 @@ DATABASES = {
         'HOST': 'database',
         'PORT': '3306',
         'OPTIONS': {
-            'read_default_file': os.path.join(BASE_DIR, 'api/my.cnf'),
+            'read_default_file': os.path.join(BASE_DIR, 'api/my.cnf')
         }
     }
 }

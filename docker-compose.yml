@@ -38,15 +38,14 @@ services:
     ports:
       - 8081:8081
 
-  # Frontend
-  frontend:
-    # User id do ambiente de testing
-    # user: 1000:1000
-    build: ./frontend
-    volumes:
-      - ./frontend:/app/
-    env_file:
-      - .env
+  # # Frontend
+  # frontend:
+  #   user: 1000:1000
+  #   build: ./frontend
+  #   volumes:
+  #     - ./frontend:/app/
+  #   env_file:
+  #     - .env
 
   nginx:
     image: nginx:latest
@@ -58,5 +57,5 @@ services:
       - ./log:/log
     depends_on:
       - backend
-      - frontend
+      # - frontend
 

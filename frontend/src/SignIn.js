@@ -48,6 +48,8 @@ const styles = theme => ({
 function SignIn(props) {
   const { classes } = props;
 
+  console.log("REACT_APP_API: %o", process.env.REACT_APP_API)
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -61,8 +63,8 @@ function SignIn(props) {
           </Typography>
           <form className={classes.form}>
             <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input id="email" name="email" autoComplete="email" autoFocus />
+              <InputLabel htmlFor="username">Username</InputLabel>
+              <Input id="username" name="username" autoComplete="username" autoFocus />
             </FormControl>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="password">Password</InputLabel>
