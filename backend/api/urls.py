@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.views import obtain_auth_token
 
 from common.views import *
 from market.views import *
@@ -27,6 +29,7 @@ from sale.views import *
 
 router = DefaultRouter()
 
+router.register(r'user', UserViewSet)
 router.register(r'country', CountryViewSet)
 router.register(r'state', StateViewSet)
 router.register(r'city', CityViewSet)
@@ -41,6 +44,7 @@ router.register(r'sale/payment', PaymentViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
+    url(r'^obtain-auth-token/$', csrf_exempt(obtain_auth_token)),
 ]
 
 if settings.DEBUG:

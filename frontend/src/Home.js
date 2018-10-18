@@ -3,7 +3,12 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import PropTypes from 'prop-types';
 
-const styles = theme => ({})
+import  Header from './Header';
+const styles = theme => ({
+  root: {
+    display: 'flex',
+  },
+});
 
 class Home extends Component {
 
@@ -13,13 +18,13 @@ class Home extends Component {
 
 
   render() {
-
+    const { classes } = this.props;
     return (
       <React.Fragment>
         <CssBaseline />      
-          <div>
-              <h1>Home</h1>
-          </div>
+        <div className={classes.root}>
+          <Header />
+        </div>
       </React.Fragment>
     );
   }

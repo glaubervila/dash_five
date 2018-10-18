@@ -34,9 +34,6 @@ export function logout() {
 }
 
 export function getToken(username, password, cb) {
-
-  console.log("Get Token")
-
   axios
     .post(`${api}/obtain-auth-token/`, {
       username: username,

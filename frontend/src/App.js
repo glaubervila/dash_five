@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
 // Material-UI
@@ -18,7 +17,7 @@ import 'typeface-roboto';
 // Pages 
 import { isAuthenticated } from './auth';
 import history from './history';
-import SignIn from './SignIn';
+import Login from './Login';
 import Home from './Home';
 
 
@@ -56,7 +55,7 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
           <Router history={history}>
             <Switch>
-              <Route path="/login" name="Login" component={SignIn} />
+              <Route path="/login" name="Login" component={Login} />
               <PrivateRoute path="/" name="Home" component={Home} />
             </Switch>
           </Router>
