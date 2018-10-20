@@ -60,45 +60,43 @@ class Header extends Component {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
+      <AppBar position="absolute">
+        <Toolbar>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" color="inherit" className={classes.grow}>
+                Dash Five
+          </Typography>
+          <div>
+            <IconButton
+              aria-owns={open ? 'menu-appbar' : null}
+              aria-haspopup="true"
+              onClick={this.handleMenu}
+              color="inherit"
+            >
+              <AccountCircle />
             </IconButton>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
-                  Dash Five
-            </Typography>
-            <div>
-              <IconButton
-                aria-owns={open ? 'menu-appbar' : null}
-                aria-haspopup="true"
-                onClick={this.handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={this.handleClose}
-              >
-                <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
-                {/* <MenuItem onClick={this.handleClose}>My account</MenuItem> */}
-              </Menu>
-            </div>
-          </Toolbar>
-        </AppBar>
-      </div>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={open}
+              onClose={this.handleClose}
+            >
+              <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+              {/* <MenuItem onClick={this.handleClose}>My account</MenuItem> */}
+            </Menu>
+          </div>
+        </Toolbar>
+      </AppBar>
     );
   }
 }

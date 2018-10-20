@@ -112,3 +112,20 @@ Django REST API: http://localhost:8081/api/    (need to be logged in on admin)
 
 PhpMyAdmin: http://localhost:8082/ (user: root password: adminadmin)
 
+
+## Useful Commands in Docker
+
+List all containers
+```
+docker ps
+```
+
+Stop all container
+```
+docker stop $(docker ps -aq)
+```
+
+Retrieve the IP of a container
+```
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_name_or_id>
+```

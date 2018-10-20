@@ -4,7 +4,7 @@ from .models import Ticket, Payment
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
-    list_display = ('id', 'store', 'checkout', 'number', 'date', 'amount', 'discount', 'is_canceled')
+    list_display = ('id', 'store', 'checkout', 'number', 'date', 'amount', 'discount', 'discount_percentage', 'is_canceled')
     search_fields = ('number',)
 
 @admin.register(Payment)

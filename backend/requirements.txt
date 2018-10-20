@@ -11,3 +11,5 @@ coveralls
 pep8
 pyflakes
 pytest
+faker
+pandas

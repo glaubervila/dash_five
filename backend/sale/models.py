@@ -41,7 +41,12 @@ class Ticket(models.Model):
         verbose_name='Discount',
         max_digits=15,
         decimal_places=3,
-        null=True, blank=True
+        default=0
+    )
+
+    discount_percentage = models.FloatField(
+        verbose_name='Discount Percentage',
+        null=True, blank=False
     )
 
     is_canceled = models.BooleanField(

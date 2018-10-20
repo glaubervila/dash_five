@@ -4,7 +4,7 @@ from .models import Store, Checkout
 
 @admin.register(Store)
 class StoreAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'social_name', 'country', 'state', 'city')
+    list_display = ('id', 'name', 'social_name', 'number', 'country', 'state', 'city')
     search_fields = ('name', 'social_name',)
 
 

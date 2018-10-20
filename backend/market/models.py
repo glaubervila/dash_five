@@ -13,6 +13,12 @@ class Store(models.Model):
         verbose_name='Social Name'
     )
 
+    number = models.PositiveIntegerField(
+        verbose_name='Number',
+        default=None,
+        null=True, blank=True
+    )
+
     country = models.ForeignKey(
         Country, 
         on_delete=models.CASCADE, 
@@ -53,4 +59,4 @@ class Checkout(models.Model):
 
 
     def __str__(self):
-        return self.number
+        return "%s - Checkout %s" % (self.store.name, str(self.number))
