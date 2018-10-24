@@ -22,6 +22,8 @@ git clone https://github.com/glaubervila/dash_five.git
 
 ```
 cd dash_five
+mkdir archive log
+touch .env
 ```
 
 ### Build and Run Containers 
@@ -99,6 +101,17 @@ yarn
 Start the development server
 ```
 yarn run start
+```
+
+## Generate Fake data for testing and development
+Stores
+```
+docker exec -it dash_five_backend_1 python manage.py createfakestore 5 --delete
+```
+
+Sales
+```
+docker exec -it dash_five_backend_1 python manage.py createfakesales '2018-01-01' '2018-12-31' --delete
 ```
 
 ## Instalation Complete
