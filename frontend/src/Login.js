@@ -59,8 +59,8 @@ class Login extends Component {
 
   get initialState() {
     return {
-      username: 'gverde',
-      password: 'adminadmin',
+      username: '',
+      password: '',
     };
   }
 
@@ -100,6 +100,7 @@ class Login extends Component {
                   name="username" 
                   autoComplete="username" 
                   autoFocus 
+                  onChange={e => this.setState({ username: e.target.value })}
                   value={this.state.username} />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -109,7 +110,8 @@ class Login extends Component {
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                  value={this.state.username}
+                  onChange={e => this.setState({ password: e.target.value })}
+                  value={this.state.password}
                 />
               </FormControl>
               {/* <FormControlLabel

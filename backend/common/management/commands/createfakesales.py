@@ -191,8 +191,6 @@ class Command(BaseCommand):
             @param: float percentade_chance exemplo: 12
             tem 12% de chance de retornar True.
         """
-        # TODO Rever essa formula nao parece estar retornando 
-        # a porcentagem correta.
         if random.randint(0,100) < percentage_chance:
             return True
         else:
