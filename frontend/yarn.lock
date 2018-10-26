@@ -8168,6 +8168,13 @@ react-scripts@2.0.5:
   optionalDependencies:
     fsevents "1.2.4"
 
+react-sparklines@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-sparklines/-/react-sparklines-1.7.0.tgz#9b1d97e8c8610095eeb2ad658d2e1fcf91f91a60"
+  integrity sha512-bJFt9K4c5Z0k44G8KtxIhbG+iyxrKjBZhdW6afP+R7EnIq+iKjbWbEFISrf3WKNFsda+C46XAfnX0StS5fbDcg==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-syntax-highlight@^15.3.1:
   version "15.3.1"
   resolved "https://registry.yarnpkg.com/react-syntax-highlight/-/react-syntax-highlight-15.3.1.tgz#b44f6f77e2783e8f74c4b30b50d5a886cc35fc1f"

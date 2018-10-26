@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import PropTypes from 'prop-types';
-import { Switch, Route, Redirect } from "react-router-dom";
+import { 
+  Switch, 
+  Route, 
+  // Redirect 
+} from "react-router-dom";
 
 import  Header from './Header';
 import Sales from './sales/Sales';
