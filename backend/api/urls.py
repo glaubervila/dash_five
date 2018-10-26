@@ -44,7 +44,7 @@ router.register(r'sale/payment', PaymentViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
-    url(r'^obtain-auth-token/$', csrf_exempt(obtain_auth_token)),
+    url(r'^api/obtain-auth-token/$', csrf_exempt(obtain_auth_token)),
 ]
 
 if settings.DEBUG:

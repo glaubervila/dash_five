@@ -11,6 +11,10 @@ import {
   SparklinesBars, 
   // SparklinesReferenceLine 
 } from 'react-sparklines';
+
+import SalesApi from 'sales/Api'
+
+
 const styles = theme => ({
   card: {
     padding: theme.spacing.unit,
@@ -47,13 +51,48 @@ const styles = theme => ({
 
 class Sales extends Component {
 
+  state = this.initialState;
+  api = new SalesApi();
+
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };
 
+  get initialState() {
+    return {
+      loading: false,
+      today_summary: {}
+    };
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+
+  fetchData = () => {
+    this.setState({ loading: true });
+
+    this.api
+      .today_summary()
+      .then(res => {
+        const data = res.data;
+
+        console.log(data)
+        this.setState({
+          today_summary: data,
+          loading: false,
+        });
+      });
+  };
 
   render() {
     const { classes } = this.props;
+
+    let net_sale = '';
+    if (this.state.today_summary.net_sale) {
+      net_sale = 'R$ ' + this.state.today_summary.net_sale;
+    }
 
     return (
       <div className={classes.root}>
@@ -64,8 +103,9 @@ class Sales extends Component {
                 <Typography variant="subtitle1" className={classes.amounttile} gutterBottom>
                   Venda Liquida
                 </Typography>
+                {/* TODO: Usar alguma biblioteca para converter float para moeda local */}
                 <Typography variant="h5" className={classes.amount} gutterBottom>
-                  R$ 150.000
+                  {net_sale}
                 </Typography>
                 <div> 
                   <Sparklines data={[99, 80, 75, 94, 10, 5, 15, 20, 50, 55, 45, 70, 80]}>
@@ -77,6 +117,10 @@ class Sales extends Component {
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} lg={4}>
+            <Paper className={classes.paper}>            
+            </Paper>
+          </Grid>          
+          {/* <Grid item xs={12} sm={6} lg={4}>
             <Paper className={classes.paperchart}>            
                 <Typography variant="subtitle1" className={classes.amounttile} gutterBottom>
                   Venda Liquida
@@ -87,13 +131,13 @@ class Sales extends Component {
                 <div className={classes.chart}>
                 <Sparklines data={[99, 80, 75, 94, 10, 5, 15, 20, 50, 55, 45, 70, 80]}>
                   <SparklinesBars style={{ fill: '#80D8FF', fillOpacity: ".5" }} />
-                  {/* <SparklinesReferenceLine /> */}
+                  <SparklinesReferenceLine /> 
                 </Sparklines>
                 </div>
             </Paper>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={6} lg={4}>
-            <Paper className={classes.paperchart}>            
+            <Paper className={classes.paper}>            
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>

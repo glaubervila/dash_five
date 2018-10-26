@@ -57,7 +57,7 @@ class TicketViewSet(viewsets.ModelViewSet):
 
 
     @list_route()
-    def summary_day(self, request):
+    def today_summary(self, request):
         """
         get:
         Retorna informacoes das vendas do dia.
