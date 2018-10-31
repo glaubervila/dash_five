@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from datetime import datetime, timedelta
-from django.db.models import Sum, Avg
+from django.db.models import Sum, Avg, Max, Min
 from rest_framework import viewsets
 from rest_framework.decorators import list_route
 from rest_framework.response import Response
@@ -43,12 +43,20 @@ class TicketViewSet(viewsets.ModelViewSet):
         # Valor Medio dos Tickets incluindos os cancelados
         average = queryset.aggregate(Avg('amount'))['amount__avg'] or 0.00
 
+        # Venda mais alta
+        highest = queryset.aggregate(Max('amount'))['amount__max'] or 0.00
+
+        # Venda mais baixa
+        lower = queryset.aggregate(Min('amount'))['amount__min'] or 0.00
+
         summary = dict({
             'net_sale': net_sale,
             'amount': amount,
             'discounts': discount,
             'canceled': canceled,
             'average': float("%.3f" % average),
+            'highest': float("%.3f" % highest),
+            'lower': float("%.3f" % lower),
             'count': queryset.count(),
             'count_canceled': queryset.filter(is_canceled=True).count(),
         })

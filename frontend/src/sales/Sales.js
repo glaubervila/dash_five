@@ -13,7 +13,7 @@ import {
 } from 'react-sparklines';
 
 import SalesApi from 'sales/Api'
-
+import SmallText from 'components/SmallText'
 
 const styles = theme => ({
   card: {
@@ -61,7 +61,19 @@ class Sales extends Component {
   get initialState() {
     return {
       loading: false,
-      today_summary: {}
+      net_sale: null,
+      amount: null,
+      discount: null,
+      canceled: null, 
+      average: null, 
+      highest: null, 
+      lower: null,
+      count: null,
+      count_canceled: null,
+      datetime: null,
+      pct_change: null,
+      yesterday_net_sale: null,
+
     };
   }
 
@@ -78,9 +90,19 @@ class Sales extends Component {
       .then(res => {
         const data = res.data;
 
-        console.log(data)
         this.setState({
-          today_summary: data,
+          net_sale: data.net_sale,
+          amount: data.amount,
+          discounts: data.discounts, 
+          canceled: data.canceled, 
+          average: data.average, 
+          highest: data.highest,
+          lower: data.lower,
+          count: data.count, 
+          count_canceled: data.count_canceled,
+          datetime: data.datetime,
+          pct_change: data.pct_change,
+          yesterday_net_sale: data.yesterday_net_sale,
           loading: false,
         });
       });
@@ -88,11 +110,6 @@ class Sales extends Component {
 
   render() {
     const { classes } = this.props;
-
-    let net_sale = '';
-    if (this.state.today_summary.net_sale) {
-      net_sale = 'R$ ' + this.state.today_summary.net_sale;
-    }
 
     return (
       <div className={classes.root}>
@@ -105,7 +122,7 @@ class Sales extends Component {
                 </Typography>
                 {/* TODO: Usar alguma biblioteca para converter float para moeda local */}
                 <Typography variant="h5" className={classes.amount} gutterBottom>
-                  {net_sale}
+                  {this.state.net_sale}
                 </Typography>
                 <div> 
                   <Sparklines data={[99, 80, 75, 94, 10, 5, 15, 20, 50, 55, 45, 70, 80]}>
@@ -115,11 +132,7 @@ class Sales extends Component {
                 </div>
               </CardContent>
             </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <Paper className={classes.paper}>            
-            </Paper>
-          </Grid>          
+          </Grid>       
           {/* <Grid item xs={12} sm={6} lg={4}>
             <Paper className={classes.paperchart}>            
                 <Typography variant="subtitle1" className={classes.amounttile} gutterBottom>
@@ -137,23 +150,16 @@ class Sales extends Component {
             </Paper>
           </Grid> */}
           <Grid item xs={12} sm={6} lg={4}>
-            <Paper className={classes.paper}>            
-            </Paper>
+            <SmallText title="Vendas Canceladas" currency={this.state.canceled}></SmallText>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          <Grid item xs={12} sm={6} lg={4}>
+            <SmallText title="Descontos" currency={this.state.discounts}></SmallText>
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          <Grid item xs={12} sm={6} lg={4}>
+            <SmallText title="Ticket Médio" currency={this.state.average}></SmallText>
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          <Grid item xs={12} sm={6} lg={4}>
+            <SmallText title="Maior Ticket" currency={this.state.highest}></SmallText>
           </Grid>
         </Grid>
       </div>
