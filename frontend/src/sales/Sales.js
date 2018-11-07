@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+import PropTypes, { array } from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -14,6 +14,8 @@ import {
 
 import SalesApi from 'sales/Api'
 import SmallText from 'components/SmallText'
+
+import SalesStoreChart from 'sales/SalesStoreChart'
 
 const styles = theme => ({
   card: {
@@ -30,6 +32,7 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText,
     fontWeight: theme.typography.fontWeightMedium
   },
+
   paperchart: {
     padding: theme.spacing.unit *2,
     paddingBottom: 'unset',
@@ -45,6 +48,11 @@ const styles = theme => ({
 
   chart: {
 
+  },
+  cardchart: {
+    padding: theme.spacing.unit *2,
+    minheight: '200px',
+    height: '200px', 
   }
 
 });
@@ -73,7 +81,7 @@ class Sales extends Component {
       datetime: null,
       pct_change: null,
       yesterday_net_sale: null,
-
+      store_summay: [],
     };
   }
 
@@ -106,6 +114,13 @@ class Sales extends Component {
           loading: false,
         });
       });
+
+      this.api.store_summary().then(res => {
+        const data = res.data.data;
+        this.setState({
+          store_summay: data
+        })
+      })
   };
 
   render() {
@@ -114,6 +129,16 @@ class Sales extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
+          <Grid item xs={12} sm={6} lg={4}>
+            <Card className={classes.cardchart}>
+              <CardContent>
+                <SalesStoreChart data={this.state.store_summay}/>
+              </CardContent>
+            </Card>
+          </Grid>  
+
+
+
           <Grid item xs={12} sm={6} lg={4}>
             <Card className={classes.card}>
               <CardContent>

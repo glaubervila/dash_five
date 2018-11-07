@@ -24,7 +24,7 @@ class SmallText extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     title: PropTypes.string,
-    currency: PropTypes.string,
+    currency: PropTypes.number,
   };
 
   render() {

@@ -8,6 +8,9 @@ class SalesApi {
   today_summary = () =>
     axios.get(`${this.api}/sale/ticket/today_summary/`);  
 
+  store_summary = () =>
+    axios.get(`${this.api}/sale/ticket/store_summary/`);  
+
 }
 
 export default SalesApi;

@@ -38,7 +38,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         canceled = queryset.filter(is_canceled=True).aggregate(Sum('amount'))['amount__sum'] or 0.00
 
         # Total liquido de Tickets ( total - cancelados - descontos )
-        net_sale = amount - canceled - discount
+        net_sale = float(amount) - float(canceled) - float(discount)
 
         # Valor Medio dos Tickets incluindos os cancelados
         average = queryset.aggregate(Avg('amount'))['amount__avg'] or 0.00
@@ -91,6 +91,39 @@ class TicketViewSet(viewsets.ModelViewSet):
 
 
         return Response(today_summary)
+
+
+    @list_route()
+    def store_summary(self, request):
+
+        # Lista com todas as lojas
+        stores = Store.objects.all()
+
+        # Dia 
+        today = timezone.now()
+
+        result = dict({
+            'data': []
+        })
+
+        for store in stores:
+            amount = store.ticket_set.filter(
+                is_canceled=False, 
+                date__year=today.year, 
+                date__month=today.month,
+                date__day=today.day,
+                ).aggregate(Sum('amount'))['amount__sum'] or 0.00
+
+
+            result['data'].append(dict({
+                'store_id': store.id,
+                'store_name': store.name,
+                'amount': float("%.3f" % amount)
+            }))    
+
+
+        return Response(result)
+
 
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
