@@ -51,8 +51,12 @@ const styles = theme => ({
   },
   cardchart: {
     padding: theme.spacing.unit *2,
-    minheight: '200px',
-    height: '200px', 
+    minheight: '400px',
+    height: '500px', 
+  },
+  cardchartcontent: {
+    width: '100%',
+    height: '100%',
   }
 
 });
@@ -131,7 +135,7 @@ class Sales extends Component {
         <Grid container spacing={24}>
           <Grid item xs={12} sm={6} lg={4}>
             <Card className={classes.cardchart}>
-              <CardContent>
+              <CardContent className={classes.cardchartcontent}>
                 <SalesStoreChart data={this.state.store_summay}/>
               </CardContent>
             </Card>

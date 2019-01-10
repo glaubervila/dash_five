@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from .models import Store, Checkout
+from .models import Loja
 
-@admin.register(Store)
-class StoreAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'social_name', 'number', 'country', 'state', 'city')
-    search_fields = ('name', 'social_name',)
+@admin.register(Loja)
+class LojaAdmin(admin.ModelAdmin):
+    list_display = ('id', 'cnpj', 'nome', 'nome_fantasia', 'pais', 'estado', 'cidade')
+    search_fields = ('cnpj', 'nome', 'nome_fantasia')
 
 
-@admin.register(Checkout)
-class CheckoutAdmin(admin.ModelAdmin):
-    list_display = ('id','store', 'number',)
-    search_fields = ('number',)
+# @admin.register(Checkout)
+# class CheckoutAdmin(admin.ModelAdmin):
+#     list_display = ('id','store', 'number',)
+#     search_fields = ('number',)

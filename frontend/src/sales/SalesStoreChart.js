@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import numeral from 'numeral';
 import Plot from 'react-plotly.js';
-
+import sizeMe from 'react-sizeme';
 const styles = theme => ({
 });
 
@@ -42,11 +42,12 @@ class SalesStoreChart extends Component {
                 store_summary
               ]}
               layout={{
-                width: width, 
-                height: height, 
+                autosize: false,
+                width: this.props.size.width,
+                height: this.props.size.height, 
                 title: '',
-                responsive: true,
-                autosize: true,
+                // responsive: true,
+                // autosize: true,
                 showlegend: false,
               }}
               config={{
@@ -58,4 +59,4 @@ class SalesStoreChart extends Component {
   }     
 }
 
-export default withStyles(styles)(SalesStoreChart);
+export default withStyles(styles)(sizeMe({ monitorHeight: true})(SalesStoreChart));

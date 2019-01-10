@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'common',
     'market',
     'sale',
+    'stock',
 ]
 
 MIDDLEWARE = [
@@ -98,12 +99,13 @@ DATABASES = {
     #  },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dashboard',
+        'NAME': 'retaguarda',
         'USER': 'root',
         'PASSWORD': 'adminadmin',
         'HOST': 'database',
         'PORT': '3306',
         'OPTIONS': {
+            'charset': 'utf8',
             'read_default_file': os.path.join(BASE_DIR, 'api/my.cnf')
         }
     }

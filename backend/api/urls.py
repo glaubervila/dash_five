@@ -34,11 +34,11 @@ router.register(r'country', CountryViewSet)
 router.register(r'state', StateViewSet)
 router.register(r'city', CityViewSet)
 
-router.register(r'market/store', StoreViewSet)
-router.register(r'market/checkout', CheckoutViewSet)
+# router.register(r'market/store', StoreViewSet)
+# router.register(r'market/checkout', CheckoutViewSet)
 
-router.register(r'sale/ticket', TicketViewSet)
-router.register(r'sale/payment', PaymentViewSet)
+# router.register(r'sale/ticket', NfeViewSet)
+# router.register(r'sale/payment', PaymentViewSet)
 
 
 urlpatterns = [

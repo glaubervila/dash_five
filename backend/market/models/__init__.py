@@ -1,0 +1,2 @@
+
+from .loja import Loja
