@@ -13,3 +13,4 @@ pyflakes
 pytest
 faker
 pandas
+xmltodict

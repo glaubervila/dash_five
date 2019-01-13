@@ -33,7 +33,6 @@ class Command(BaseCommand):
 
     def load_produtos(self, filepath):
 
-        self.stdout.write("Teste")
 
         data = pd.read_csv(filepath, delimiter=';') 
 
@@ -45,7 +44,7 @@ class Command(BaseCommand):
         for row in data.itertuples():
             try:
                 prod, created = Produto.objects.update_or_create(
-                    pk=row.CODIGO, 
+                    codigo=row.CODIGO, 
                     defaults={
                         'descricao': row.PRODUTO,
                         'unidade': row.UNIDADE

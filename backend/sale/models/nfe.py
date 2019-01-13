@@ -84,7 +84,7 @@ class Nfe(models.Model):
         max_length=1
     )
 
-    n_item = models.PositiveIntegerField(
+    q_item = models.PositiveIntegerField(
         verbose_name = "Items",
         help_text='Quantidade de Items',
         default=0
@@ -114,33 +114,5 @@ class Nfe(models.Model):
         default=0
     )
 
-
-
-# class Payment(models.Model):
-
-#     ticket = models.ForeignKey(
-#         Ticket,
-#         on_delete=models.CASCADE,
-#         verbose_name='Ticket'
-#     )
-
-#     option = models.CharField(
-#         verbose_name='Option',
-#         max_length=128,
-#     )
-
-#     value = models.DecimalField(
-#         verbose_name='Value',
-#         max_digits=15,
-#         decimal_places=3
-#     )
-
-#     date_time = models.DateTimeField(
-#         verbose_name='Date Time',
-#         auto_now=False
-#     )
-
-#     is_canceled = models.BooleanField(
-#         verbose_name='Canceled',
-#         default=False
-#     )
+    def __str__(self):
+        return self.numero

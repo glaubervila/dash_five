@@ -5,7 +5,7 @@ from stock.models import Produto
 
 class NfProduto(models.Model):
 
-    nf = models.ForeignKey   (
+    nf = models.ForeignKey(
         Nfe, 
         on_delete=models.CASCADE,
         verbose_name='Nota Fiscal'
@@ -15,6 +15,12 @@ class NfProduto(models.Model):
         Produto, 
         on_delete=models.CASCADE,
         verbose_name='Produto'
+    )
+
+    n_item = models.PositiveIntegerField(
+        verbose_name='Número',
+        help_text='Número do item',
+        default=1
     )
 
     ean = models.CharField(
@@ -82,6 +88,12 @@ class NfProduto(models.Model):
     v_unit_tributacao = models.FloatField(
         verbose_name='Tributação',
         help_text='Valor Unitário de tributação',
+        default=0
+    )
+
+    v_total_tributo = models.FloatField(
+        verbose_name='Total de Tributos',
+        help_text='Valor aproximado total de tributos federais, estaduais e municipais.',
         default=0
     )
 

@@ -27,6 +27,9 @@ from common.views import *
 from market.views import *
 from sale.views import *
 
+# Todo rever essa parte
+from common import views as common_views
+
 router = DefaultRouter()
 
 router.register(r'user', UserViewSet)
@@ -45,6 +48,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
     url(r'^api/obtain-auth-token/$', csrf_exempt(obtain_auth_token)),
+    url(r'^api/teste/', common_views.teste),
 ]
 
 if settings.DEBUG:

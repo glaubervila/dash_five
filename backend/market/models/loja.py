@@ -78,7 +78,7 @@ class Loja(models.Model):
     crt = models.CharField(
         max_length=1, 
         verbose_name='Código de Regime Tributário',
-        choices=(('1', 'Simples Nacional'), ('2', 'Simples Nacional, excesso sublimite de receita bruta'), ('3', 'Regime Normal') )
+        choices=(('1', '1 - Simples Nacional'), ('2', '2 - Simples Nacional, excesso sublimite de receita bruta'), ('3', '3 - Regime Normal') )
     )
 
     def __str__(self):

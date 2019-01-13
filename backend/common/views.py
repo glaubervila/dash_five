@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from rest_framework import viewsets, response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 from django.contrib.auth.models import User
 from .models import *
@@ -51,3 +53,27 @@ class CityViewSet(viewsets.ModelViewSet):
     filter_fields = ('id','state', 'name', )
     search_fields = ('name',)    
     ordering = ('name',)
+
+
+@api_view(['GET'])
+def teste(request):
+    if request.method == 'GET':
+
+        print ("Import NFe")
+        from sale.import_nfe import ImportNF
+        import os
+        from django.conf import settings
+
+        nf =ImportNF() 
+
+        filepath = os.path.join(settings.MEDIA_TMP_DIR, 'nfe2.xml')
+
+        a = nf.import_xml(filepath)
+
+
+        result = dict({
+            'success': True,
+            'data': a
+        })
+
+    return Response(result)    

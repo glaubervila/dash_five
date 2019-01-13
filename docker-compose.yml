@@ -22,6 +22,8 @@ services:
       - 8082:80
     volumes:
       - /sessions
+    depends_on:
+      - database      
 
   #Backend Django
   backend:
@@ -57,5 +59,6 @@ services:
       - ./log:/log
     depends_on:
       - backend
-      # - frontend
+      - database      
+
 
