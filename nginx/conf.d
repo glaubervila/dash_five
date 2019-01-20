@@ -2,11 +2,6 @@ upstream api {
     server backend:8081;
 }
 
-upstream react {
-    server frontend:8082;
-}
-
-
 server {
 
     listen 8080;
@@ -48,14 +43,14 @@ server {
         proxy_no_cache 1;
     }
 
-    location / {
-      #root /var/www/frontend;
-      #try_files $uri $uri/ /index.html;
-      proxy_pass http://react$request_uri;
-      proxy_set_header Host $host;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-      proxy_set_header X-Forwarded-Host $server_name;
-      proxy_set_header X-Real-IP $remote_addr;
-    }
+    #location / {
+    #  #root /var/www/frontend;
+    #  #try_files $uri $uri/ /index.html;
+    #  proxy_pass http://react$request_uri;
+    #  proxy_set_header Host $host;
+    #  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    #  proxy_set_header X-Forwarded-Host $server_name;
+    #  proxy_set_header X-Real-IP $remote_addr;
+    #}
 
 }

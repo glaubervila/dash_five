@@ -25,7 +25,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 from common.views import *
 from market.views import *
-from sale.views import *
+from sale.views import NfeViewSet
 
 # Todo rever essa parte
 from common import views as common_views
@@ -36,6 +36,8 @@ router.register(r'user', UserViewSet)
 router.register(r'country', CountryViewSet)
 router.register(r'state', StateViewSet)
 router.register(r'city', CityViewSet)
+
+router.register(r'nfe', NfeViewSet)
 
 # router.register(r'market/store', StoreViewSet)
 # router.register(r'market/checkout', CheckoutViewSet)

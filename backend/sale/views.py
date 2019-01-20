@@ -6,10 +6,17 @@ from rest_framework import viewsets
 from rest_framework.decorators import list_route
 from rest_framework.response import Response
 import pandas 
-# from .models import Nfe
-from .serializers import *
+from .models import Nfe
+from .serializers import NfeSerializer
 
 
+class NfeViewSet(viewsets.ModelViewSet):
+    queryset = Nfe.objects.all()
+    serializer_class = NfeSerializer
+    # filter_fields = ('id', 'store', 'checkout', 'number', 'date', 'is_canceled',)
+    search_fields = ('numero', )
+    # ordering_fields = ('number', 'date','start_time', 'amount')
+    # ordering = ('-start_time',)  
 
 # class NfeViewSet(viewsets.ModelViewSet):
 #     queryset = Nfe.objects.all()
